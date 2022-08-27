@@ -21,6 +21,9 @@ app.listen(3000, function () {
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/static' + '/home.html'));
+    if(req.query.name) {
+        res.redirect('/' + req.query.name); 
+    }
 });
 
 app.get('/static/style.css', (req, res) => {
@@ -48,9 +51,4 @@ app.get('/:name/*', (req, res) => {
         return res.redirect('/' + req.params.name + '?age=' + req.query.age);
     }
     res.redirect('/' + req.params.name);
-});
-
-app.post('/', (req, res) => {
-    let name = req.body.name;
-    res.redirect('/' + name);
 });
