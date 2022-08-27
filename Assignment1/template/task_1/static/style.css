@@ -1,4 +1,39 @@
 body {
     font-family: helvetica;
     font-size: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.text_box {
+    width: 165px;
+    height: 32px;
+    background-color: pink;
+    margin-left: 1ch;
+    margin-right: 1ch;
+    border-radius: 4px;
+    transition: 0.5s;
+}
+
+.text_box:invalid {
+    background-color: pink;
+}
+
+.text_box:focus {
+    background-color: white;
+}
+
+.text_box:valid {
+    background-color: white;
+}
+
+.submit {
+    padding: 3ch;
+    font-family: helvetica;
+    font-size: 18px;
+    height: 32px;
+    margin-left: 0.5ch;
+    margin-right: 0.5ch;
+    vertical-align: baseline;
 }

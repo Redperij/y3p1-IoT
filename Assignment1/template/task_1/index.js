@@ -1,8 +1,3 @@
-//npm install node --safe
-//node index.js
-//npm install -g nodemon
-//nodemon index.js
-
 'use strict';
 
 const path = require('path');
@@ -14,17 +9,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Listen on port 3000.
+// Listen on port 3000. http://localhost:3000
 app.listen(3000, function () {
     console.log('Listening port 3000');
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/static' + '/home.html'));
-    if(req.query.name) {
-        res.redirect('/' + req.query.name); 
-    }
-});
+/***************************/
+/*   Getting .css files.   */
+/***************************/
 
 app.get('/static/style.css', (req, res) => {
     res.sendFile(path.join(__dirname + '/static' + '/style.css'));
@@ -32,6 +24,21 @@ app.get('/static/style.css', (req, res) => {
 
 app.get('/static/home_style.css', (req, res) => {
     res.sendFile(path.join(__dirname + '/static' + '/home_style.css'));
+});
+
+app.get('/static/age_style.css', (req, res) => {
+    res.sendFile(path.join(__dirname + '/static' + '/age_style.css'));
+});
+
+/***************************/
+/*      Redirections       */
+/***************************/
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/static' + '/home.html'));
+    if(req.query.name) {
+        res.redirect('/' + req.query.name); 
+    }
 });
 
 app.get('/:name', (req, res) => {
