@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#name {
+    width: 165px;
+    height: 32px;
+    background-color: pink;
+    transition: width 0.5s;
+}
+
+#name:focus {
+    width: 330px;
+    background-color: white;
+}
