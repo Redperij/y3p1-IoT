@@ -9,9 +9,22 @@ body {
     height: 32px;
     background-color: pink;
     transition: width 0.5s;
+    margin-left: 1ch;
+    margin-right: 1ch;
+    border-radius: 4px;
 }
 
 #name:focus {
     width: 330px;
     background-color: white;
+}
+
+#submit_name {
+    padding: 3ch;
+    font-family: helvetica;
+    font-size: 18px;
+    height: 32px;
+    margin-left: 0.5ch;
+    margin-right: 0.5ch;
+    vertical-align: baseline;
 }
