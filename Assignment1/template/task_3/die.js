@@ -1,3 +1,7 @@
+//<script defer src="../die.js"></script>
+
+//Not used
+
 /**********************/
 /* Main Functionality */
 /**********************/

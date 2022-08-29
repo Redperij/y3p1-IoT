@@ -20,10 +20,17 @@ app.listen(3000, function () {
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname + '/views' + '/home.html'));
-	if(req.query.roll) {
-        res.render('die', {roll:req.query.roll});
+	/*if(req.query.roll) {
+        //res.render('die', {roll:req.query.roll});
+		roll = req.query.roll;
+		res.redirect('/image');
 		//UpdatePicture(req.query.roll);
-    }
+    }*/
+});
+
+app.get('/image', (req, res) => {
+	let result = Math.floor(Math.random() * 6 + 1);
+	res.render('die', {roll:result});
 });
 
 app.get('/die.js', (req, res) => {
@@ -52,4 +59,8 @@ app.get('/images/5.png', (req, res) => {
 
 app.get('/images/6.png', (req, res) => {
 	res.sendFile(path.join(__dirname + '/images/6.png'));
+});
+
+app.get('/static/style.css', (req, res) => {
+    res.sendFile(path.join(__dirname + '/views' + '/style.css'));
 });

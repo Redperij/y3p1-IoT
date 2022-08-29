@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Die</title>
-    <script defer src="../die.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 <!--A die image, a button and script for re-rolling a die-->
-    <img class="die" src="/images/<%=roll%>.png" alt="<%=roll%>" />
-    <button id="die_button">Roll Die</button>
+    <div class="die_and_button">
+        <% if (roll != 0) { %>
+            <img class="die" src="/images/<%=roll%>.png" alt="<%=roll%>" />
+        <% } %>
+        <form action="/image" method="get">
+	        <button id="die_button">Roll Die</button>
+        </form>
+    </div>
 </body>
 </html>
