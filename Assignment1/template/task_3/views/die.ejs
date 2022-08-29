@@ -8,10 +8,13 @@
 <body>
 <!--A die image, a button and script for re-rolling a die-->
     <div class="die_and_button">
+        <% if (error == 1) { %>
+            <p>Error</p>
+        <% } %>
         <% if (roll != 0) { %>
             <img class="die" src="/images/<%=roll%>.png" alt="<%=roll%>" />
         <% } %>
-        <form action="/image" method="get">
+        <form action="<%= Math.floor(Math.random() * 6 + 1) %>" >
 	        <button id="die_button">Roll Die</button>
         </form>
     </div>
