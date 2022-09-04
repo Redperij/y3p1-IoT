@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Comment out what shouldn't be on git.
+stuff/
