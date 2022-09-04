@@ -14,15 +14,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/index', express.static(path.resolve(__dirname, 'index')));
 
-
-// Listen on port 3000. http://localhost:3000
 app.listen(3000, function () {
-    console.log('Listening port 3000');
+    console.log('Listening port 3000. http://localhost:3000');
 });
-
-/***************************/
-/*      Redirections       */
-/***************************/
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index/index.html'));
