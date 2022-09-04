@@ -58,19 +58,19 @@ function updateRam(aram, rram) {
 }
 
 butB.onclick = () => {
-    updateRamView(ABSOLUTE_RAM, 'b')
+    updateRamView(ABSOLUTE_RAM, 'b');
 }
 
 butKB.onclick = () => {
-    updateRamView(ABSOLUTE_RAM, 'kb')
+    updateRamView(ABSOLUTE_RAM, 'kb');
 }
 
 butMB.onclick = () => {
-    updateRamView(ABSOLUTE_RAM, 'mb')
+    updateRamView(ABSOLUTE_RAM, 'mb');
 }
 
 butGB.onclick = () => {
-    updateRamView(ABSOLUTE_RAM, 'gb')
+    updateRamView(ABSOLUTE_RAM, 'gb');
 }
 
 setInterval(async () => {
