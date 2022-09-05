@@ -71,7 +71,7 @@ app.post('/', async (req, res) => {
         cars.push(car);
         console.log('Just before writing.');
         console.log(cars);
-        fs.writeFile(path.resolve(__dirname, db), JSON.stringify(cars)).catch(error => console.error('Failed to write file:', error));
+        await fs.writeFile(path.resolve(__dirname, db), JSON.stringify(cars)).catch(error => console.error('Failed to write file:', error));
         console.log('Got to the end.');
         res.redirect('/');
 	} catch (error) {
