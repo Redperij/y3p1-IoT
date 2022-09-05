@@ -3,27 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Events</title>
-    <!-- <script id="index_js" data-events='<%- JSON.stringify(events) %>' async="async" src="/views/index.js"></script> -->
-    <script>
-        const clear_events = async () => {
-            await fetch('/clear');
-            window.location.assign('/');
-        }
-
-        const events = <%- JSON.stringify(events) %>;
-        setInterval(()=>{
-            console.log('Got events:');
-            console.log(events);
-            for (const event of events) {
-                let counter = new Date(event.date).valueOf() - Date.now();
-                if(counter < 0) {
-                    document.getElementById(event.name).textContent = '- Past already';
-                } else {
-                    document.getElementById(event.name).textContent = Math.floor(counter/1000);
-                }
-            }
-        }, 1000)
-    </script>
+    <script id="index_js" data-events='<%- JSON.stringify(events) %>' async="async" src="/views/index.js"></script>
   </head>
   <body>
     <form action="/event" method="post">
@@ -41,7 +21,6 @@
             <%}%>
         </ul>
     </div>
-    <!-- <button id="clear">Clear events</button> -->
-    <button onclick="clear_events()">Clear events</button>
+    <button id="clear">Clear events</button>
     </body>
 </html>
