@@ -6,7 +6,7 @@
     <!-- <script id="index_js" data-events='<%- JSON.stringify(events) %>' async="async" src="/views/index.js"></script> -->
     <script>
         const clear_events = async () => {
-            await fetch('/clear', {method: 'post'});
+            await fetch('/clear');
             window.location.assign('/');
         }
 

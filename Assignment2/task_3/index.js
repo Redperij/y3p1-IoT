@@ -18,10 +18,10 @@ app.listen(3000, function () {
     console.log('Listening port 3000. http://localhost:3000');
 });
 
-app.post('/clear', async (req, res) => {
+app.get('/clear', async (req, res) => {
     res.clearCookie('events');
     console.log('Cleared cookies.');
-    res.status(200);
+    res.redirect('/');
 });
 
 app.post('/event', async (req, res) => {
@@ -43,7 +43,7 @@ app.post('/event', async (req, res) => {
     }
     
     events.push({name, date});
-    res.cookie('events', JSON.stringify(events), {maxAge:86400000});
+    res.cookie('events', JSON.stringify(events), {maxAge:86400000, httpOnly: true});
     res.redirect('/');
 });
 
