@@ -33,16 +33,6 @@ db.run(`CREATE TABLE IF NOT EXISTS Cars (
 
 let getAllCars = "SELECT Producer as producer, Model as model, Mileage as mileage, Year as year, Plate as plate, _id FROM Cars";
 
-//Debug
-/*
-db.all(getAllCars, (err, rows) => {
-	rows.forEach((row) => {
-		console.log(row._id + ": " + row.producer + " - " + row.model + " - " + row.mileage + " - " + row.year + " - " + row.plate);
-	})
-});
-*/
-// /Debug
-
 app.listen(3000, function () {
     console.log('Listening port 3000. http://localhost:3000');
 });
