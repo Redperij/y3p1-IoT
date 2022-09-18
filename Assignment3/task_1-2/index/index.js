@@ -10,14 +10,14 @@
             carText.innerText = JSON.stringify(car);
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
-            deleteButton.id = car.id;
+            deleteButton.id = car._id;
             rawCarJson.appendChild(carText);
             rawCarJson.appendChild(deleteButton);
 
             deleteButton.addEventListener('click', event => {
                 event.preventDefault();
 
-                fetch('/' + car.id, {
+                fetch('/' + car._id, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
