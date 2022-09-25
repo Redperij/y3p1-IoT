@@ -4,32 +4,61 @@ const path = require('path');
 const express = require('express');
 const ejs = require('ejs');
 const serialport = require('serialport');
-const {Readline} = require("serialport/lib/parsers");
-const createInterface = require('readline').createInterface;
+//const {Readline} = require('serialport/lib/parsers');
+//const createInterface = require('readline').createInterface;
 const SerialPort = serialport.SerialPort;
 const parsers = serialport.parsers;
 
 const app = express();
-
-
+const com = new SerialPort({path: 'COM3', baudRate: 115200});
 
 // Express setup
 app.set('view engine','ejs');
 app.use(express.static('views'));
 app.use('/images', express.static('./images'));
-// Serialport setup
 
-// Listen on port 3000. http://localhost:3000
-app.listen(3000, function () {
-    console.log('Listening port 3000. http://localhost:3000');
+
+// Listen on port 3001. http://localhost:3001
+app.listen(3001, function () {
+    console.log('Listening port 3001. http://localhost:3001');
 });
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
 	res.render('home');
 });
 
-app.get('/:image', (req, res) => {
+app.get('/board_value', async (req, res) => {
+	let value = 0;
+	console.log('Before try catch');
+	setTimeout(() => {
+		try {
+			com.write('a');
+			com.write('q');
+			com.on('data', function (data) {
+				let buf = data.toString();
+				//console.log('Have got: ');
+				//console.log(buf);
+				value = buf[buf.search(/[2-6]/g)];
+				//console.log('Finally value...');
+			});
+			console.log('After try catch');
+			console.log(value);
+			res.json(value);
+		} catch (error) {
+			res.send('Your board is broken! I guess');
+		}
+	}, 1000);
+});
+
+app.get('/:image', async (req, res) => {
 	let result = req.params.image;
+	console.log('Image exec.');
+	/*await fetch('/board_value').then(res => res.json()).then(dat => {
+		dat = dat.toString();
+		console.log('I\'m in fetch!');
+		console.log(dat);
+	});*/
+	console.log('After fetch call');
 	if (!isNaN(result) && result > 0 && result < 7) {
 		res.render('die', {error:0, roll:result});
 	} else {
