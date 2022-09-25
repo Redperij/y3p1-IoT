@@ -23,11 +23,33 @@ app.listen(3001, function () {
     console.log('Listening port 3001. http://localhost:3001');
 });
 
+function get_uart_num () {
+    let number;
+    com.write('a', function (err) {
+        if(err) return console.log("Error: ", err.message);
+    });
+    com.write('q', function (err) {
+        if(err) return console.log("Error: ", err.message);
+    });
+    const promise = new Promise((resolve,reject) => {
+        setTimeout(() => com.on('data', function (data) {
+            let buffer = data.toString();
+            number = buffer[buffer.search(/[2-6]/g)];
+            console.log("number inside: " + Number(number));
+            resolve(number)
+        }), 1000)
+    })
+    return promise;
+};
+
 app.get('/', async (req, res) => {
 	res.render('home');
 });
 
 app.get('/board_value', async (req, res) => {
+	get_uart_num();
+	res.redirect('/');
+	/*
 	let value = 0;
 	console.log('Before try catch');
 	setTimeout(() => {
@@ -48,6 +70,7 @@ app.get('/board_value', async (req, res) => {
 			res.send('Your board is broken! I guess');
 		}
 	}, 1000);
+	*/
 });
 
 app.get('/:image', async (req, res) => {
