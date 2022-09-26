@@ -33,8 +33,8 @@ db.run(`CREATE TABLE IF NOT EXISTS Cars (
 
 let getAllCars = "SELECT Producer as producer, Model as model, Mileage as mileage, Year as year, Plate as plate, _id FROM Cars";
 
-app.listen(3000, function () {
-    console.log('Listening port 3000. http://localhost:3000');
+app.listen(3002, function () {
+    console.log('Listening port 3002. http://localhost:3002');
 });
 
 app.get('/', (req, res) => {
