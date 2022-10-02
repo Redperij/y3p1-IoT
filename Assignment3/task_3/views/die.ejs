@@ -14,7 +14,7 @@
         <% if (roll != 0) { %>
             <img class="die" src="/images/<%=roll%>.png" alt="<%=roll%>" />
         <% } %>
-        <form action="<%= Math.floor(Math.random() * 6 + 1) %>" >
+        <form action="/image" >
 	        <button id="die_button">Roll Die</button>
         </form>
     </div>

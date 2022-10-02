@@ -27,7 +27,7 @@ app.get('/', async (req, res) => {
 	res.render('home');
 });
 
-app.get('/:image', async (req, res) => {
+app.get('/image', async (req, res) => {
 
 	try {
 		await com.write('a');
