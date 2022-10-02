@@ -1,0 +1,12 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "cars",
+            "group": "cars",
+            "database": "${workspaceFolder:Assignment3}/task_1-2/Store"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
