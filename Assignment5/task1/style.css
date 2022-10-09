@@ -1,0 +1,16 @@
+body {
+    font-family: helvetica;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#cont {
+    justify-content: left;
+}
+
+#thermometer {
+    width: 10em;
+    height: 10em;
+}
